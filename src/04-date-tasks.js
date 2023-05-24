@@ -1,3 +1,4 @@
+/* eslint linebreak-style: ["error", "windows"] */
 /* *******************************************************************************************
  *                                                                                           *
  * Please read the following tutorial before implementing tasks:                              *
@@ -5,7 +6,6 @@
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date     *
  *                                                                                           *
  ******************************************************************************************* */
-
 
 /**
  * Parses a rfc2822 string date representation into date value
@@ -38,7 +38,6 @@ function parseDataFromIso8601(/* value */) {
   throw new Error('Not implemented');
 }
 
-
 /**
  * Returns true if specified date is leap year and false otherwise
  * Please find algorithm here: https://en.wikipedia.org/wiki/Leap_year#Algorithm
@@ -56,7 +55,6 @@ function parseDataFromIso8601(/* value */) {
 function isLeapYear(/* date */) {
   throw new Error('Not implemented');
 }
-
 
 /**
  * Returns the string representation of the timespan between two dates.
@@ -77,7 +75,6 @@ function timeSpanToString(/* startDate, endDate */) {
   throw new Error('Not implemented');
 }
 
-
 /**
  * Returns the angle (in radians) between the hands of an analog clock
  * for the specified Greenwich time.
@@ -97,7 +94,6 @@ function timeSpanToString(/* startDate, endDate */) {
 function angleBetweenClockHands(/* date */) {
   throw new Error('Not implemented');
 }
-
 
 module.exports = {
   parseDataFromRfc2822,
