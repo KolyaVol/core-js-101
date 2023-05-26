@@ -157,8 +157,12 @@ function doRectanglesOverlap(/* rect1, rect2 */) {
  *   { center: { x:0, y:0 }, radius:10 },  { x:10, y:10 }   => false
  *
  */
-function isInsideCircle(/* circle, point */) {
-  throw new Error('Not implemented');
+function isInsideCircle(circle, point) {
+  const distance = Math.sqrt(
+    // eslint-disable-next-line comma-dangle
+    (point.x - circle.center.x) ** 2 + (point.y - circle.center.y) ** 2
+  );
+  return distance < circle.radius;
 }
 
 /**
@@ -280,8 +284,19 @@ function isCreditCardNumber(/* ccn */) {
  *   10000 ( 1+0+0+0+0 = 1 ) => 1
  *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
  */
-function getDigitalRoot(/* num */) {
-  throw new Error('Not implemented');
+function getDigitalRoot(num) {
+  // eslint-disable-next-line no-unused-vars
+  let num1 = num;
+  let sum = 0;
+  while (num1 > 0 || sum > 9) {
+    if (num1 === 0) {
+      num1 = sum;
+      sum = 0;
+    }
+    sum += num1 % 10;
+    num1 = Math.floor(num1 / 10);
+  }
+  return sum;
 }
 
 /**
@@ -305,8 +320,28 @@ function getDigitalRoot(/* num */) {
  *   '{)' = false
  *   '{[(<{[]}>)]}' = true
  */
-function isBracketsBalanced(/* str */) {
-  throw new Error('Not implemented');
+function isBracketsBalanced(str) {
+  const stack = [];
+  const brackets = {
+    '{': '}',
+    '[': ']',
+    '(': ')',
+    '<': '>',
+  };
+
+  // eslint-disable-next-line no-restricted-syntax
+  for (const char of str) {
+    if (char in brackets) {
+      stack.push(char);
+    } else {
+      const last = stack.pop();
+      if (char !== brackets[last]) {
+        return false;
+      }
+    }
+  }
+
+  return stack.length === 0;
 }
 
 /**
@@ -329,8 +364,19 @@ function isBracketsBalanced(/* str */) {
  *    365, 4  => '11231'
  *    365, 10 => '365'
  */
-function toNaryString(/* num, n */) {
-  throw new Error('Not implemented');
+function toNaryString(num, n) {
+  if (num === 0) {
+    return '0';
+  }
+
+  let result = '';
+  while (num > 0) {
+    result = (num % n) + result;
+    // eslint-disable-next-line no-param-reassign
+    num = Math.floor(num / n);
+  }
+
+  return result;
 }
 
 /**
@@ -367,8 +413,19 @@ function getCommonDirectoryPath(/* pathes */) {
  *                         [ 6 ]]
  *
  */
-function getMatrixProduct(/* m1, m2 */) {
-  throw new Error('Not implemented');
+function getMatrixProduct(m1, m2) {
+  const result = [];
+  for (let i = 0; i < m1.length; i += 1) {
+    result[i] = [];
+    for (let j = 0; j < m2[0].length; j += 1) {
+      let sum = 0;
+      for (let k = 0; k < m1[0].length; k += 1) {
+        sum += m1[i][k] * m2[k][j];
+      }
+      result[i].push(sum);
+    }
+  }
+  return result;
 }
 
 /**
