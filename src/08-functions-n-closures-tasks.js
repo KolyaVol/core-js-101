@@ -70,6 +70,7 @@ function getPolynom(...args) {
     return null;
   }
 
+  // eslint-disable-next-line func-names
   return function (x) {
     let result = 0;
     let power = args.length - 1;
@@ -102,6 +103,7 @@ function getPolynom(...args) {
  */
 function memoize(func) {
   let cachedResult;
+  // eslint-disable-next-line func-names
   return function () {
     if (!cachedResult) {
       cachedResult = func();
